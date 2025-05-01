@@ -32,7 +32,7 @@
 1. **Клонувати репозиторій:**
 
    ```bash
-   git clone https://github.com/your-username/Tiny-Wins-TG-Bot.git
+   git clone https://github.com/boryslavsky2003/Tiny-Wins-TG-Bot.git
    cd Tiny-Wins-TG-Bot
    ```
 
@@ -56,7 +56,7 @@
    - Тепер ви можете запустити бота командою:
 
      ```bash
-     python bot.py
+     python -m bot.main
      ```
 
 ---
