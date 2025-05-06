@@ -1,38 +1,47 @@
 import asyncio
 import logging
-from aiogram import Bot, Dispatcher, types
-from aiogram.filters import Command
-from dotenv import load_dotenv
 import os
 
-load_dotenv()
-logging.basicConfig(level=logging.INFO)
+from aiogram import Bot, Dispatcher, types
+from aiogram.types import Update
+from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
+from aiohttp import web
 
-bot = Bot(token=os.getenv("BOT_TOKEN"))
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
+
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+WEBHOOK_DOMAIN = os.getenv("WEBHOOK_DOMAIN")
+WEBHOOK_PATH = os.getenv("WEBHOOK_PATH")
+WEBHOOK_URL = f"{WEBHOOK_DOMAIN}{WEBHOOK_PATH}"
+
+bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 
-@dp.message(Command("start"))
-async def cmd_start(message: types.Message):
-    await message.answer(f"Hello, {message.from_user.full_name}! I'm a Telegram bot.")
 
-@dp.message()
-async def echo(message: types.Message):
-    await message.answer(message.text)
+async def on_startup(app: web.Application):
+    await bot.set_webhook(WEBHOOK_URL)
+    print(f"Webhook set to {WEBHOOK_URL}")
 
-@dp.startup()
-async def on_startup() -> None:
-    logging.info("Bot started with polling")
 
-@dp.shutdown()
-async def on_shutdown() -> None:
-    logging.info("Bot stopped")
+async def on_shutdown(app: web.Application):
+    await bot.delete_webhook()
+    print("Webhook deleted")
 
-async def main() -> None:
-    # Using polling mode instead of webhooks
-    await dp.start_polling(bot, skip_updates=True)
+
+async def main():
+    app = web.Application()
+
+    app.on_startup.append(on_startup)
+    app.on_shutdown.append(on_shutdown)
+
+    app.router.add_post(WEBHOOK_PATH, SimpleRequestHandler(dispatcher=dp, bot=bot))
+    setup_application(app, dp, bot=bot)
+
 
 if __name__ == "__main__":
-    try:
-        asyncio.run(main())
-    except KeyboardInterrupt:
-        logging.info("Bot stopped!")
+    logging.basicConfig(level=logging.INFO)
+    asyncio.run(main())
