@@ -2,27 +2,26 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    # Bot settings
+    # Telegram Bot
     BOT_TOKEN: str
+    ADMIN_ID: str
 
-    # Database settings
-    DATABASE_URL: str
+    # Webhook
+    WEBHOOK_DOMAIN: str
+    WEBHOOK_PATH: str
+    PORT: int
 
-    # API settings
-    API_URL: str = "https://api.example.com"
-    API_KEY: str = ""
+    # Channels
+    CHANNEL_ID_UA: str = ""
+    CHANNEL_ID_US: str = ""
 
-    # Application settings
-    DEBUG: bool = False
-    LOG_LEVEL: str = "INFO"
+    # API Keys
+    OPENAI_API_KEY: str = ""
 
-    # Web server settings (if applicable)
-    HOST: str = "0.0.0.0"
-    PORT: int = 8000
+    # Scheduling
+    SCHEDULED_TIME: str = ""
 
     class Config:
-        """Pydantic configuration."""
-
         env_file = ".env"
         env_file_encoding = "utf-8"
         case_sensitive = True
