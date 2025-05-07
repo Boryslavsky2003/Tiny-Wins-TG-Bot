@@ -1,4 +1,3 @@
-import asyncio
 import logging
 import os
 
@@ -8,17 +7,19 @@ from aiohttp import web
 
 from dotenv import load_dotenv
 
+from bot.config import settings
+from bot.router import router
+
 
 load_dotenv()
 
 
-BOT_TOKEN = os.getenv("BOT_TOKEN")
-WEBHOOK_DOMAIN = os.getenv("WEBHOOK_DOMAIN")
-WEBHOOK_PATH = os.getenv("WEBHOOK_PATH")
-WEBHOOK_URL = f"{WEBHOOK_DOMAIN}{WEBHOOK_PATH}"
-
-bot = Bot(token=BOT_TOKEN)
+bot = Bot(token=settings.BOT_TOKEN)
 dp = Dispatcher()
+dp.include_router(router)
+
+WEBHOOK_PATH = f"/webhook/{settings.BOT_TOKEN}"
+WEBHOOK_URL = f"{settings.WEBHOOK_DOMAIN}{settings.WEBHOOK_PATH}"
 
 
 async def on_startup(app: web.Application):
@@ -31,7 +32,7 @@ async def on_shutdown(app: web.Application):
     print("Webhook deleted")
 
 
-async def main():
+def main():
     app = web.Application()
 
     app.on_startup.append(on_startup)
@@ -43,4 +44,5 @@ async def main():
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
-    asyncio.run(main())
+    port = int(os.getenv("PORT", "8080"))
+    web.run_app(main(), port=port, host="0.0.0.0")
