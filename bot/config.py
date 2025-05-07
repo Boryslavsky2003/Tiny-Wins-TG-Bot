@@ -8,8 +8,6 @@ class Settings(BaseSettings):
 
     # Webhook
     WEBHOOK_DOMAIN: str
-    WEBHOOK_PATH: str
-    PORT: int
 
     # Channels
     CHANNEL_ID_UA: str = ""

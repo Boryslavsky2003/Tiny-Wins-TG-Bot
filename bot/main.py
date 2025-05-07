@@ -7,6 +7,8 @@ from aiohttp import web
 
 from dotenv import load_dotenv
 
+from loguru import logger
+
 from bot.config import settings
 from bot.router import router
 
@@ -18,8 +20,11 @@ bot = Bot(token=settings.BOT_TOKEN)
 dp = Dispatcher()
 dp.include_router(router)
 
+
 WEBHOOK_PATH = f"/webhook/{settings.BOT_TOKEN}"
-WEBHOOK_URL = f"{settings.WEBHOOK_DOMAIN}{settings.WEBHOOK_PATH}"
+WEBHOOK_URL = f"{settings.WEBHOOK_DOMAIN}{WEBHOOK_PATH}"
+
+logger.info("Routers connected")
 
 
 async def on_startup(app: web.Application):
@@ -41,8 +46,14 @@ def main():
     app.router.add_post(WEBHOOK_PATH, SimpleRequestHandler(dispatcher=dp, bot=bot))
     setup_application(app, dp, bot=bot)
 
+    return app
+
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
+
+    print(settings.BOT_TOKEN)
+    print(settings.WEBHOOK_DOMAIN)
+
     port = int(os.getenv("PORT", "8080"))
     web.run_app(main(), port=port, host="0.0.0.0")
