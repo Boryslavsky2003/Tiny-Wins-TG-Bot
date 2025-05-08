@@ -19,7 +19,10 @@ async def show_channel_id(message: Message, state: FSMContext):
     chat = message.forward_from_chat
 
     if chat.type == "channel":
-        await message.answer(f"Channel ID: {chat.id}", parse_mode="Markdown")
+        await message.answer(
+            f"Channel:\nID: {chat.id}\nChannel name: {chat.title}",
+            parse_mode="Markdown",
+        )
         await state.clear()
     else:
         await message.answer("Please forward a message from a channel.")
