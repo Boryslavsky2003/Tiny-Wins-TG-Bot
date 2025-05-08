@@ -8,8 +8,8 @@ from aiogram.types import (
 channel = InlineKeyboardMarkup(
     inline_keyboard=[
         [
-            InlineKeyboardButton(text="UA 🇺🇦", callback_data="ua"),
-            InlineKeyboardButton(text="US 🇺🇸", callback_data="us"),
+            InlineKeyboardButton(text="UA 🇺🇦", callback_data="channel:ua"),
+            InlineKeyboardButton(text="US 🇺🇸", callback_data="channel:us"),
         ]
     ]
 )

@@ -2,4 +2,4 @@ from aiogram.fsm.state import StatesGroup, State
 
 
 class ChannelsState(StatesGroup):
-    choosing_channel = State()
+    waiting_for_forward = State()
