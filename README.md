@@ -1,9 +1,3 @@
----
-
-Commands Bot:
-
-start - Start bot
-get_id - get channel or user ID
 
 ---
 
@@ -126,5 +120,37 @@ get_id - get channel or user ID
 ## **Ліцензія:**
 
 Цей проект ліцензується на умовах [MIT ліцензії](LICENSE).
+
+---
+
+## # Below are some examples # ##
+
+---
+
+.env file
+
+# Telegarm Bot Configuration
+BOT_TOKEN=
+ADMIN_ID=
+
+# Webhook Configuration
+WEBHOOK_DOMAIN=
+
+# Channel IDs
+CHANNEL_ID_UA=
+CHANNEL_ID_US=
+
+# API Keys
+OPENAI_API_KEY=
+
+# Scheduling | Format: HH:MM (24-hour)
+SCHEDULED_TIME=
+
+---
+
+Commands Bot:
+
+start - Start bot
+get_id - get channel or user ID
 
 ---
