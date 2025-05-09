@@ -1,5 +1,13 @@
 ---
 
+Commands Bot:
+
+start_bot - Start bot
+get_channel_id - get channel ID
+get_user_id - get user ID
+
+---
+
 # **Tiny-Wins-TG-Bot** ✨
 
 **Tiny-Wins-TG-Bot** — це телеграм-бот, створений для автоматизації публікації контенту на каналі **Маленькі перемоги**, що включає пости на різноманітні теми, орієнтовані на жінок.
