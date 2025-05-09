@@ -8,7 +8,7 @@ from loguru import logger
 router = Router()
 
 
-@router.message(Command("start_bot"))
+@router.message(Command("start"))
 async def cmd_start_handler(message: Message) -> None:
     try:
         await message.answer(f"Hello, {hbold(message.from_user.full_name)}!")

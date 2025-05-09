@@ -2,9 +2,8 @@
 
 Commands Bot:
 
-start_bot - Start bot
-get_channel_id - get channel ID
-get_user_id - get user ID
+start - Start bot
+get_id - get channel or user ID
 
 ---
 
