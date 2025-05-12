@@ -15,6 +15,8 @@ class Settings(BaseSettings):
 
     # API Keys
     HUGGINGFACE_TOKEN: str
+    MODEL_TEXT_URL: str
+    MODEL_IMAGE_URL: str
 
     # Scheduling
     SCHEDULED_TIME: str = ""
