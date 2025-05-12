@@ -10,8 +10,8 @@ class Settings(BaseSettings):
     WEBHOOK_DOMAIN: str
 
     # Channels
-    CHANNEL_ID_UA: str = ""
-    CHANNEL_ID_US: str = ""
+    UA_CHANNEL_ID: str
+    UA_CHANNEL_ID: str
 
     # API Keys
     OPENAI_API_KEY: str = ""
