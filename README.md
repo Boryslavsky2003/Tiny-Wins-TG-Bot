@@ -1,3 +1,6 @@
+---
+
+Для того щоб користуватися ботом, обов'язково потрібно в .env файлі вказати ID адміністратора
 
 ---
 
@@ -141,7 +144,7 @@ UA_CHANNEL_ID=
 US_CHANNEL_ID=
 
 # API Keys
-OPENAI_API_KEY=
+HUGGINGFACE_TOKEN=
 
 # Scheduling | Format: HH:MM (24-hour)
 SCHEDULED_TIME=
