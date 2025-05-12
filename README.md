@@ -90,7 +90,7 @@ MODEL_IMAGE_URL=
 
 # Commands Bot:
 
-##### start - Start bot
-##### get_id - get channel or user ID
+#### start - Start bot
+#### get_id - get channel or user ID
 
 ---
