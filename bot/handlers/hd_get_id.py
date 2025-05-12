@@ -4,11 +4,14 @@ from aiogram.fsm.context import FSMContext
 
 from bot.states import ChannelsState
 
+from bot.utils.access import admin_only
+
 
 router = Router()
 
 
 @router.message(F.text == "/get_id")
+@admin_only
 async def get_channel_id(message: Message, state: FSMContext):
     await message.answer(
         "👀 Send me a forwarded message from a channel or from a user:"
@@ -17,6 +20,7 @@ async def get_channel_id(message: Message, state: FSMContext):
 
 
 @router.message(ChannelsState.waiting_for_forward)
+@admin_only
 async def show_channel_id(message: Message, state: FSMContext):
     chat = message.forward_from_chat
     user = message.forward_from
