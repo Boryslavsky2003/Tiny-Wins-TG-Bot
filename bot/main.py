@@ -11,7 +11,8 @@ from loguru import logger
 
 from bot.config import settings
 from bot.router import router
-
+from bot.utils.huggingface_text import generate_text
+from bot.utils.huggingface_image import generate_image
 
 load_dotenv()
 
@@ -54,6 +55,13 @@ if __name__ == "__main__":
 
     print(settings.BOT_TOKEN)
     print(settings.WEBHOOK_DOMAIN)
+    print(settings.HUGGINGFACE_TOKEN)
+
+    text = generate_text("Give me a short motivational quote for women.")
+    print(text)
+
+    file = generate_image("a peaceful morning in a forest, watercolor style")
+    print("Saved image to:", file)
 
     port = int(os.getenv("PORT", "8080"))
     web.run_app(main(), port=port, host="0.0.0.0")

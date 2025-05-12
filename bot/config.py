@@ -14,7 +14,7 @@ class Settings(BaseSettings):
     US_CHANNEL_ID: str
 
     # API Keys
-    OPENAI_API_KEY: str = ""
+    HUGGINGFACE_TOKEN: str
 
     # Scheduling
     SCHEDULED_TIME: str = ""
