@@ -61,7 +61,7 @@
 
 # .env
 
-** Telegarm Bot Configuration **
+(Telegarm Bot Configuration)
 BOT_TOKEN=
 ADMIN_ID=
 
