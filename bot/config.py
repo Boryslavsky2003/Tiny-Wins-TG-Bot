@@ -11,7 +11,7 @@ class Settings(BaseSettings):
 
     # Channels
     UA_CHANNEL_ID: str
-    UA_CHANNEL_ID: str
+    US_CHANNEL_ID: str
 
     # API Keys
     OPENAI_API_KEY: str = ""
