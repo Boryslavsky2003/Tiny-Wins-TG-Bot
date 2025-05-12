@@ -61,24 +61,24 @@
 
 # .env
 
-.# Telegarm Bot Configuration
+** Telegarm Bot Configuration **
 BOT_TOKEN=
 ADMIN_ID=
 
-.# Webhook Configuration
+** Webhook Configuration
 WEBHOOK_DOMAIN=
 
-.# Channel IDs
+** Channel IDs
 UA_CHANNEL_ID=
 US_CHANNEL_ID=
 
-.# API Keys
+** API Keys
 HUGGINGFACE_TOKEN=
 
 MODEL_TEXT_URL=
 MODEL_IMAGE_URL=
 
-.# Scheduling | Format: HH:MM (24-hour)
+** Scheduling | Format: HH:MM (24-hour)
 1_SCHEDULED_TIME=13:30
 2_SCHEDULED_TIME=18:30
 
