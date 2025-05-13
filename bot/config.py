@@ -19,7 +19,8 @@ class Settings(BaseSettings):
     MODEL_IMAGE_URL: str
 
     # Scheduling
-    SCHEDULED_TIME: str = ""
+    ONE_SCHEDULED_TIME: int
+    TWO_SCHEDULED_TIME: int
 
     class Config:
         env_file = ".env"
