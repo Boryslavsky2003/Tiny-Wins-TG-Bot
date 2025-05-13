@@ -1,4 +1,5 @@
 from pydantic_settings import BaseSettings
+from datetime import time
 
 
 class Settings(BaseSettings):
@@ -19,8 +20,8 @@ class Settings(BaseSettings):
     MODEL_IMAGE_URL: str
 
     # Scheduling
-    ONE_SCHEDULED_TIME: int
-    TWO_SCHEDULED_TIME: int
+    ONE_SCHEDULED_TIME: time
+    TWO_SCHEDULED_TIME: time
 
     class Config:
         env_file = ".env"
