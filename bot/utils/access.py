@@ -1,20 +1,30 @@
 from aiogram.types import Message
 from bot.config import settings
+from functools import lru_cache
+
+
+@lru_cache(maxsize=1)
+def get_admin_ids() -> list[int]:
+    """Кешований список ID адміністраторів"""
+    return settings.admin_ids
 
 
 def is_admin(user_id: int) -> bool:
-    """Перевіряє, чи є користувач адміністратором"""
-    admin_ids = [int(admin_id) for admin_id in settings.ADMIN_ID.split(",")]
-    return user_id in admin_ids
+    """Надійна перевірка адміністратора"""
+    return user_id in get_admin_ids()
 
 
 def admin_only(handler):
-    """Декоратор для обмеження доступу до команд адміністраторам"""
+    """Декоратор для адмін-команд з обробкою помилок"""
 
     async def wrapper(message: Message, *args, **kwargs):
         if not is_admin(message.from_user.id):
-            await message.answer("⛔ Ця команда доступна лише адміністраторам.")
+            await message.answer("⛔ Доступ заборонено")
             return
-        return await handler(message, *args, **kwargs)
+        try:
+            return await handler(message, *args, **kwargs)
+        except Exception:
+            await message.answer("🔧 Помилка виконання команди")
+            raise
 
     return wrapper

@@ -1,4 +1,5 @@
-from aiogram import Router, F
+from aiogram.filters import Command
+from aiogram import Router
 
 from bot.utils.huggingface.test_huggingface import AIChecker
 
@@ -6,7 +7,7 @@ from bot.utils.huggingface.test_huggingface import AIChecker
 router = Router()
 
 
-@router.message(F.text == "/test_ai")
+@router.message(Command("test_ai"))
 def test_ai():
     checker = AIChecker()
     results = checker.run_full_check()

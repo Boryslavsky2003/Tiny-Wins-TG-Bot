@@ -1,5 +1,6 @@
-from aiogram import Router, F
+from aiogram import Router
 from aiogram.types import Message
+from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 
 from bot.states import ChannelsState
@@ -8,7 +9,7 @@ from bot.states import ChannelsState
 router = Router()
 
 
-@router.message(F.text == "/get_id")
+@router.message(Command("get_id"))
 async def get_channel_id(message: Message, state: FSMContext):
     await message.answer(
         "👀 Send me a forwarded message from a channel or from a user:"

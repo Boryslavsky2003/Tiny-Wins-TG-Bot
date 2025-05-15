@@ -1,5 +1,7 @@
 from pydantic_settings import BaseSettings
 from datetime import time
+from typing import List
+from pydantic import field_validator
 
 
 class Settings(BaseSettings):
@@ -24,8 +26,16 @@ class Settings(BaseSettings):
     TWO_SCHEDULED_TIME: time
 
     @property
-    def admin_ids(self) -> list[int]:
+    def admin_ids(self) -> List[int]:
+        """Повертає список ID адміністраторів як цілі числа"""
         return [int(id.strip()) for id in self.ADMIN_ID.split(",")]
+
+    @field_validator("ADMIN_ID")
+    def validate_admin_ids(cls, v):
+        """Валідація формату ADMIN_ID"""
+        if not all(id.strip().isdigit() for id in v.split(",")):
+            raise ValueError("ADMIN_ID має містити тільки цифри, розділені комами")
+        return v
 
     class Config:
         env_file = ".env"
