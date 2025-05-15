@@ -91,6 +91,7 @@ MODEL_IMAGE_URL=
 # Commands Bot:
 
 #### start - Start bot
-#### get_id - get channel or user ID
+#### get_id - Get channel or user ID
+#### test_ai - Test AI Model
 
 ---
