@@ -14,4 +14,4 @@ async def cmd_start(message: Message):
         await message.answer("⛔ Доступ заборонено")
         return
 
-    await message.answer(f"Вітаю, адміне {message.from_user.full_name}!")
+    await message.answer("Вітаю, адміне!")
