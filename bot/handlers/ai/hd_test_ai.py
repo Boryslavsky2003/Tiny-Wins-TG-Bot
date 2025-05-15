@@ -7,9 +7,9 @@ from bot.utils.huggingface.test_huggingface import AIChecker
 router = Router()
 
 
-@router.message(F.text == "/get_id")
+@router.message(F.text == "/test_ai")
 @admin_only
-def test_ai_models():
+def test_ai():
     checker = AIChecker()
     results = checker.run_full_check()
 
