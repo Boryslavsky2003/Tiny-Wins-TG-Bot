@@ -79,7 +79,7 @@ HUGGINGFACE_TOKEN=
 
 MODEL_TEXT_URL=
 
-MODEL_IMAGE_URL=
+MODEL_IMAGE_URL="https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
 
 ### Scheduling | Format: HH:MM (24-hour)
 1_SCHEDULED_TIME=13:30
