@@ -29,12 +29,12 @@ async def on_startup(app: web.Application):
         logger.success(f"Webhook successfully set to {WEBHOOK_URL}")
 
         # Тестирование моделей при старте
-        logger.info("Testing AI models...")
-        test_text = await test_text_model()
-        test_image = await test_image_model()
+        # logger.info("Testing AI models...")
+        # test_text = await test_text_model()
+        # test_image = await test_image_model()
 
-        logger.info(f"Text model test result: {test_text[:100]}...")
-        logger.info(f"Image model test saved to: {test_image}")
+        # logger.info(f"Text model test result: {test_text[:100]}...")
+        # logger.info(f"Image model test saved to: {test_image}")
 
     except Exception as e:
         logger.error(f"Startup error: {str(e)}")

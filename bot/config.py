@@ -23,6 +23,10 @@ class Settings(BaseSettings):
     ONE_SCHEDULED_TIME: time
     TWO_SCHEDULED_TIME: time
 
+    @property
+    def admin_ids(self) -> list[int]:
+        return [int(id.strip()) for id in self.ADMIN_ID.split(",")]
+
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"

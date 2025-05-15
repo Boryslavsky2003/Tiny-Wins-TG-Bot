@@ -5,14 +5,11 @@ from aiogram.utils.markdown import hbold
 
 from loguru import logger
 
-from bot.utils.access import admin_only
-
 
 router = Router()
 
 
 @router.message(Command("start"))
-@admin_only
 async def cmd_start_handler(message: Message) -> None:
     try:
         await message.answer(f"Hello, {hbold(message.from_user.full_name)}!")
