@@ -1,5 +1,6 @@
 import logging
 import os
+import aiofiles
 from aiohttp import web
 from aiogram import Bot, Dispatcher
 from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
@@ -52,9 +53,14 @@ async def on_shutdown(app: web.Application):
 async def test_text_model() -> str:
     """Тестирование текстовой модели"""
     try:
-        return huggingface_text.generate_text(
+        response = huggingface_text.generate_text(
             "Напиши коротку мотиваційну цитату українською"
         )
+        async with aiofiles.open(
+            "ai_test/test_generated_text.txt", mode="w", encoding="utf-8"
+        ) as f:
+            await f.write(response)
+        return response
     except Exception as e:
         logger.error(f"Text model test failed: {str(e)}")
         return f"Error: {str(e)}"
@@ -64,7 +70,8 @@ async def test_image_model() -> str:
     """Тестирование модели изображений"""
     try:
         return huggingface_image.generate_image(
-            "Сонячний ранок у лісі, акварельний стиль", "ai_test/test_generated_image.png"
+            "Сонячний ранок у лісі, акварельний стиль",
+            "ai_test/test_generated_image.png",
         )
     except Exception as e:
         logger.error(f"Image model test failed: {str(e)}")
