@@ -64,7 +64,7 @@ async def test_image_model() -> str:
     """Тестирование модели изображений"""
     try:
         return huggingface_image.generate_image(
-            "Сонячний ранок у лісі, акварельний стиль", "test_generated_image.png"
+            "Сонячний ранок у лісі, акварельний стиль", "ai_test/test_generated_image.png"
         )
     except Exception as e:
         logger.error(f"Image model test failed: {str(e)}")
