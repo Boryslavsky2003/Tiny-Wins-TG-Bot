@@ -1,6 +1,9 @@
-from aiogram.types import Message
+from aiogram.types import Message, CallbackQuery
+from functools import lru_cache, wraps
+from loguru import logger
+from typing import Union
+
 from bot.config import settings
-from functools import lru_cache
 
 
 @lru_cache(maxsize=1)
@@ -15,16 +18,29 @@ def is_admin(user_id: int) -> bool:
 
 
 def admin_only(handler):
-    """Декоратор для адмін-команд з обробкою помилок"""
+    """Універсальний декоратор для перевірки прав адміна"""
 
-    async def wrapper(message: Message, *args, **kwargs):
-        if not is_admin(message.from_user.id):
-            await message.answer("⛔ Доступ заборонено")
-            return
+    @wraps(handler)
+    async def wrapper(event: Union[Message, CallbackQuery], *args, **kwargs):
         try:
-            return await handler(message, *args, **kwargs)
-        except Exception:
-            await message.answer("🔧 Помилка виконання команди")
+            user = event.from_user
+            if not user:
+                logger.error("Подія без користувача")
+                return
+
+            if not is_admin(user.id):
+                if isinstance(event, CallbackQuery):
+                    await event.answer("⛔ Доступ заборонено!", show_alert=True)
+                else:
+                    await event.answer("⛔ Ви не адміністратор!")
+                return
+
+            return await handler(event, *args, **kwargs)
+
+        except Exception as e:
+            logger.error(f"Помилка в admin_only: {e}")
+            if isinstance(event, CallbackQuery):
+                await event.answer("🔧 Помилка обробки запиту")
             raise
 
     return wrapper

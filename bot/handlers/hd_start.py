@@ -3,13 +3,14 @@ from aiogram.filters import Command
 from aiogram.types import Message
 from loguru import logger
 
-from bot.utils.access import is_admin
+from bot.utils.access import is_admin, admin_only
 from bot.utils import keyboards
 
 router = Router()
 
 
 @router.message(Command("start"))
+@admin_only
 async def cmd_start(message: Message):
     try:
         logger.debug(f"Start command from {message.from_user.id}")
