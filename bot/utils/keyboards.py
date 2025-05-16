@@ -5,14 +5,30 @@ from aiogram.types import (
     KeyboardButton,
 )
 
-channel = InlineKeyboardMarkup(
-    inline_keyboard=[
-        [
-            InlineKeyboardButton(text="UA 🇺🇦", callback_data="channel:ua"),
-            InlineKeyboardButton(text="US 🇺🇸", callback_data="channel:us"),
+
+def create_admin_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
+                    text="📝 Створити текст за допомогою ШІ",
+                    callback_data="create_text_ai",
+                ),
+                InlineKeyboardButton(
+                    text="🎨 Згенерувати зображення на основі текстового опису",
+                    callback_data="create_image_ai",
+                ),
+            ],
+            [
+                InlineKeyboardButton(
+                    text="🤖 Протестувати AI-моделі", callback_data="test_ai"
+                ),
+                InlineKeyboardButton(
+                    text="🆔 Отримати свій ID або ID каналу", callback_data="get_id"
+                ),
+            ],
         ]
-    ]
-)
+    )
 
 
 def create_test_keyboard() -> ReplyKeyboardMarkup:
