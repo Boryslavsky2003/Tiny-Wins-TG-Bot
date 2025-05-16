@@ -25,7 +25,7 @@ def admin_only(handler):
         try:
             user = event.from_user
             if not user:
-                logger.error("Подія без користувача")
+                logger.error("Event without a user")
                 return
 
             if not is_admin(user.id):
@@ -38,7 +38,7 @@ def admin_only(handler):
             return await handler(event, *args, **kwargs)
 
         except Exception as e:
-            logger.error(f"Помилка в admin_only: {e}")
+            logger.error(f"Error in admin_only: {e}")
             if isinstance(event, CallbackQuery):
                 await event.answer("🔧 Помилка обробки запиту")
             raise
