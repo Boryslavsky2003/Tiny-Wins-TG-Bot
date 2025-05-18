@@ -8,6 +8,7 @@ from bot.handlers.callbacks import (
     call_test_ai,
 )
 
+
 router = Router()
 
 
