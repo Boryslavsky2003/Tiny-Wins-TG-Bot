@@ -21,10 +21,12 @@ def create_admin_keyboard() -> InlineKeyboardMarkup:
             ],
             [
                 InlineKeyboardButton(
-                    text="🤖 Протестувати AI-моделі", callback_data="test_ai"
+                    text="🤖 Протестувати AI-моделі",
+                    callback_data="test_ai",
                 ),
                 InlineKeyboardButton(
-                    text="🆔 Отримати свій ID або ID каналу", callback_data="get_id"
+                    text="🆔 Отримати свій ID або ID каналу",
+                    callback_data="get_id",
                 ),
             ],
         ]

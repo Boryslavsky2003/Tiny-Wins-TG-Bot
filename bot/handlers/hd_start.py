@@ -28,9 +28,7 @@ async def cmd_start(message: Message):
         logger.info(f"Sent a greeting to the admin: {user_name} (ID: {user_id})")
 
     except AttributeError as e:
-        logger.critical(
-            f"Error receiving user data: {e} | Message: {message}"
-        )
+        logger.critical(f"Error receiving user data: {e} | Message: {message}")
         await message.answer("⚠️ Помилка при обробці вашого профілю.")
 
     except Exception as e:
