@@ -8,7 +8,7 @@ from loguru import logger
 
 from bot.config import settings
 from bot.router import router
-from bot.utils.test_ai_model import test_ai_model
+# from bot.utils.test_ai_model import test_ai_model
 
 load_dotenv()
 
@@ -27,7 +27,7 @@ async def on_startup(app: web.Application):
         await bot.set_webhook(WEBHOOK_URL)
         logger.success(f"Webhook successfully set to {WEBHOOK_URL}")
 
-        await test_ai_model()
+        # await test_ai_model()
 
     except Exception as e:
         logger.error(f"Startup error: {str(e)}")
