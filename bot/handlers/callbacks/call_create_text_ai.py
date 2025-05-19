@@ -5,3 +5,8 @@ from bot.states import ChannelsState
 from bot.utils.access import admin_only
 
 router = Router()
+
+
+@router.callback_query(F.data == "create_text_ai")
+async def handle_get_id(callback: CallbackQuery, state: FSMContext):
+    await callback.message.answer("Test")
