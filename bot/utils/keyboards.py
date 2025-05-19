@@ -31,8 +31,8 @@ def create_admin_keyboard() -> InlineKeyboardMarkup:
             ],
             [
                 InlineKeyboardButton(
-                    text="❗ Допомога з ботом",
-                    callback_data="help_bot",
+                    text="Інші команди",
+                    callback_data="other_command",
                 ),
             ],
         ]

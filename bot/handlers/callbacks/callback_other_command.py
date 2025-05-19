@@ -8,8 +8,8 @@ from bot.utils.access import admin_only
 router = Router()
 
 
-@router.callback_query(F.data == "help_bot")
+@router.callback_query(F.data == "other_command")
 @admin_only
-async def handle_help_bot(callback: CallbackQuery, state: FSMContext):
+async def handle_other_command(callback: CallbackQuery, state: FSMContext):
     await callback.answer("⏳ Обробляємо ваш запит...")
     await callback.message.answer("ПРАЦЮЄ")
