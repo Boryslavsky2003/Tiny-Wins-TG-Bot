@@ -1,3 +1,7 @@
+from aiogram.utils.keyboard import InlineKeyboardBuilder
+
+from bot.utils.callback_data import BotCallback
+
 from aiogram.types import (
     InlineKeyboardMarkup,
     InlineKeyboardButton,
@@ -7,26 +11,24 @@ from aiogram.types import (
 
 
 def create_admin_keyboard() -> InlineKeyboardMarkup:
-    return InlineKeyboardMarkup(
-        inline_keyboard=[
-            [
-                InlineKeyboardButton(
-                    text="📝 Згенерувати текст",
-                    callback_data="create_text_ai",
-                ),
-                InlineKeyboardButton(
-                    text="🎨 Згенерувати зображення",
-                    callback_data="create_image_ai",
-                ),
-            ],
-            [
-                InlineKeyboardButton(
-                    text="Інші команди",
-                    callback_data="other_commands",
-                ),
-            ],
-        ]
+    builder = InlineKeyboardBuilder()
+
+    builder.button(
+        text="📝 Згенерувати текст",
+        callback_data=BotCallback(action="create_text_ai"),
     )
+    builder.button(
+        text="🎨 Згенерувати зображення",
+        callback_data=BotCallback(action="create_image_ai"),
+    )
+    builder.button(
+        text="Інші команди",
+        callback_data=BotCallback(action="other_commands"),
+    )
+
+    builder.adjust(2, 1)
+
+    return builder.as_markup()
 
 
 def create_other_commands_keyboard() -> InlineKeyboardMarkup:
@@ -35,17 +37,17 @@ def create_other_commands_keyboard() -> InlineKeyboardMarkup:
             [
                 InlineKeyboardButton(
                     text="🤖 Протестувати AI-моделі",
-                    callback_data="test_ai",
+                    callback_data=BotCallback(action="test_ai"),
                 ),
                 InlineKeyboardButton(
                     text="🆔 Отримати ID",
-                    callback_data="get_id",
+                    callback_data=BotCallback(action="get_id"),
                 ),
             ],
             [
                 InlineKeyboardButton(
                     text="⬅️ Повернутись",
-                    callback_data="go_back",
+                    callback_data=BotCallback(action="go_back"),
                 )
             ],
         ]
