@@ -10,6 +10,7 @@ router = Router()
 @router.callback_query(F.data == "get_id")
 async def handle_get_id(callback: CallbackQuery, state: FSMContext):
     try:
+        await callback.answer("⏳ Обробляємо ваш запит...")
         await callback.message.edit_reply_markup()
 
         await callback.message.answer(
