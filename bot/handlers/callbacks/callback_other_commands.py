@@ -9,7 +9,7 @@ from bot.utils.callback_data import BotCallback
 router = Router()
 
 
-@router.callback_query(BotCallback.filter(F.action == "go_back"))
+@router.callback_query(BotCallback.filter(F.action == "other_commands"))
 @admin_only
 async def handle_other_commands(callback: CallbackQuery, state: FSMContext):
     await callback.answer("⏳ Обробляємо ваш запит...")

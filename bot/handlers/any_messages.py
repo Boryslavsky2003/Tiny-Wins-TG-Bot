@@ -1,10 +1,16 @@
 from aiogram import Router, F
-from aiogram.types import Message
+from aiogram.types import Message, CallbackQuery
 
 from bot.utils.access import admin_only
 
 
 router = Router()
+
+
+@router.callback_query()
+async def debug_callback(callback: CallbackQuery):
+    print(f"Callback data: {callback.data}")
+    await callback.answer("❓ Unknown callback!")
 
 
 @router.message(F.text)

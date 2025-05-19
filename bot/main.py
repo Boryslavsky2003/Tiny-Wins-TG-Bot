@@ -24,7 +24,17 @@ logger.info("Routers connected")
 
 async def on_startup(app: web.Application):
     try:
-        await bot.set_webhook(WEBHOOK_URL)
+        await bot.set_webhook(
+            WEBHOOK_URL,
+            allowed_updates=[
+                "message",
+                "callback_query",
+                "inline_query",
+                "chosen_inline_result",
+                "poll",
+                "poll_answer",
+            ],
+        )
         logger.success(f"Webhook successfully set to {WEBHOOK_URL}")
 
         # await test_ai_model()
