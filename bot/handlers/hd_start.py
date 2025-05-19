@@ -1,5 +1,5 @@
 from aiogram import Router
-from aiogram.filters import Command
+from aiogram.filters import CommandStart
 from aiogram.types import Message
 from loguru import logger
 
@@ -10,7 +10,7 @@ from bot.utils import keyboards
 router = Router()
 
 
-@router.message(Command("start"))
+@router.message(CommandStart())
 @admin_only
 async def cmd_start(message: Message):
     user = message.from_user
