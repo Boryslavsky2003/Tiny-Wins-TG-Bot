@@ -21,6 +21,19 @@ def create_admin_keyboard() -> InlineKeyboardMarkup:
             ],
             [
                 InlineKeyboardButton(
+                    text="Інші команди",
+                    callback_data="other_commands",
+                ),
+            ],
+        ]
+    )
+
+
+def create_other_commands_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(
                     text="🤖 Протестувати AI-моделі",
                     callback_data="test_ai",
                 ),
@@ -31,9 +44,9 @@ def create_admin_keyboard() -> InlineKeyboardMarkup:
             ],
             [
                 InlineKeyboardButton(
-                    text="Інші команди",
-                    callback_data="other_command",
-                ),
+                    text="⬅️ Повернутись",
+                    callback_data="go_back",
+                )
             ],
         ]
     )
