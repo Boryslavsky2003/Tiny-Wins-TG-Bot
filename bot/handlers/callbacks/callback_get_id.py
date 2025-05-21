@@ -20,7 +20,6 @@ async def handle_get_id(callback: CallbackQuery, state: FSMContext):
         )
 
         await state.set_state(ChannelsState.waiting_for_forward)
-        await callback.answer()
 
     except Exception as e:
         await callback.answer("🔧 Помилка обробки запиту", show_alert=True)

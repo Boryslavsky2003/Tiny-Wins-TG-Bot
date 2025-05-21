@@ -3,11 +3,13 @@ from aiogram.types import CallbackQuery
 from aiogram.fsm.context import FSMContext
 from loguru import logger
 
+from bot.utils.callback_data import BotCallback
+
 
 router = Router()
 
 
-@router.callback_query(F.data == "test_ai")
+@router.callback_query(BotCallback.filter(F.action == "test_ai"))
 async def handle_test_ai(callback: CallbackQuery, state: FSMContext):
     try:
         # 1. Логування події
