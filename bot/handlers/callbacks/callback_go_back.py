@@ -4,14 +4,17 @@ from aiogram.fsm.context import FSMContext
 
 from bot.utils.access import admin_only
 from bot.utils import keyboards
+from bot.utils.callback_data import BotCallback
 
 
 router = Router()
 
 
-@router.callback_query(F.data == "go_back")
+@router.callback_query(BotCallback.filter(F.action == "go_back"))
 @admin_only
 async def handle_go_back(callback: CallbackQuery, state: FSMContext):
-    await callback.answer("⏳ Обробляємо ваш запит...")
+    await callback.answer("")
 
-    await callback.message.answer(reply_markup=keyboards.create_admin_keyboard())
+    text = "Головне меню"
+
+    await callback.message.answer(text ,reply_markup=keyboards.create_admin_keyboard())
