@@ -15,6 +15,7 @@ router = Router()
 async def handle_go_back(callback: CallbackQuery, state: FSMContext):
     await callback.answer("")
 
-    text = "Головне меню"
-
-    await callback.message.answer(text ,reply_markup=keyboards.create_admin_keyboard())
+    await callback.message.answer(
+        text="Головне меню",
+        reply_markup=keyboards.create_admin_keyboard(),
+    )

@@ -15,8 +15,7 @@ router = Router()
 async def handle_other_commands(callback: CallbackQuery, state: FSMContext):
     await callback.answer("")
 
-    text = "Меню адміністратора"
-
     await callback.message.answer(
-        text, reply_markup=keyboards.create_other_commands_keyboard()
+        text="Меню адміністратора",
+        reply_markup=keyboards.create_other_commands_keyboard(),
     )
