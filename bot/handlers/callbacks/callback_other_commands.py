@@ -14,7 +14,7 @@ router = Router()
 async def handle_other_commands(callback: CallbackQuery, state: FSMContext):
     await callback.answer("⏳ Обробляємо ваш запит...")
 
-    user = callable.message.from_user
+    user = callback.message.from_user
     text = f"{user.first_name}, Ви повернулися до меню адміністратора."
 
     await callback.message.answer(
