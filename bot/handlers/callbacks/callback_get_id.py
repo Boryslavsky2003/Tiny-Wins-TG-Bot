@@ -13,7 +13,6 @@ router = Router()
 async def handle_get_id(callback: CallbackQuery, state: FSMContext):
     try:
         await callback.answer("")
-        await callback.message.edit_reply_markup()
 
         await callback.message.answer(
             "👀 Надішліть переслане повідомлення з каналу або від користувача:",
