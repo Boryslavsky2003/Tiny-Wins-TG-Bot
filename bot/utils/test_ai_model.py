@@ -4,7 +4,7 @@ import aiofiles
 from bot.utils.huggingface import huggingface_text, huggingface_image
 
 
-async def test_ai_model():
+async def complex_test_ai_model():
     logger.info("Testing AI models...")
     test_text = await test_text_model()
     test_image = await test_image_model()
