@@ -36,17 +36,17 @@ def create_other_commands_keyboard() -> InlineKeyboardMarkup:
             [
                 InlineKeyboardButton(
                     text="🤖 Протестувати AI-моделі",
-                    callback_data=BotCallback(action="test_ai"),
+                    callback_data=BotCallback(action="test_ai").pack(),
                 ),
                 InlineKeyboardButton(
                     text="🆔 Отримати ID",
-                    callback_data=BotCallback(action="get_id"),
+                    callback_data=BotCallback(action="get_id").pack(),
                 ),
             ],
             [
                 InlineKeyboardButton(
                     text="⬅️ Повернутись",
-                    callback_data=BotCallback(action="go_back"),
+                    callback_data=BotCallback(action="go_back").pack(),
                 )
             ],
         ]
