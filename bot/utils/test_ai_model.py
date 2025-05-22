@@ -17,10 +17,10 @@ async def test_text_model() -> str:
     """Тестирование текстовой модели"""
     try:
         response = huggingface_text.generate_text(
-            "Напиши коротку мотиваційну цитату українською"
+            "Напиши коротку мотиваційну цитату українською, про 'Сонячний ранок у лісі, акварельний стиль'"
         )
         async with aiofiles.open(
-            "ai_test/test_generated_text.txt", mode="w", encoding="utf-8"
+            "ai/ai_test_gen/test_generated_text.txt", mode="w", encoding="utf-8"
         ) as f:
             await f.write(response)
         return response
@@ -34,7 +34,7 @@ async def test_image_model() -> str:
     try:
         return huggingface_image.generate_image(
             "Сонячний ранок у лісі, акварельний стиль",
-            "ai_test/test_generated_image.png",
+            "ai/ai_test_gen/test_generated_image.png",
         )
     except Exception as e:
         logger.error(f"Image model test failed: {str(e)}")

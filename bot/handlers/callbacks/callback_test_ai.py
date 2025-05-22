@@ -25,8 +25,8 @@ async def handle_test_ai(callback: CallbackQuery, state: FSMContext):
 
         await test_ai_model.complex_test_ai_model()
 
-        image_path = "ai_test/test_generated_image.png"
-        text_path = "ai_test/test_generated_text.txt"
+        image_path = "ai/ai_test_gen/test_generated_image.png"
+        text_path = "ai/ai_test_gen/test_generated_text.txt"
 
         if not os.path.exists(image_path) or os.path.getsize(image_path) == 0:
             await waiting_msg.delete()
