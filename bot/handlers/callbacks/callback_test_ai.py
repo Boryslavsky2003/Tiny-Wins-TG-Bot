@@ -19,7 +19,7 @@ async def handle_test_ai(callback: CallbackQuery, state: FSMContext):
         await callback.answer("🔄 Обробка запиту...", show_alert=False)
 
         waiting_msg = await callback.message.answer(
-            "Зачекайте будь ласка ⏳",
+            "Будь ласка, зачекайте ⏳",
             parse_mode="Markdown",
         )
 
