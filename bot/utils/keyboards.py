@@ -14,6 +14,10 @@ def create_admin_keyboard() -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
 
     builder.button(
+        text="📝🎨 Комплексна генерація ШІ",
+        callback_data=BotCallback(action="complex_ai_generation").pack(),
+    )
+    builder.button(
         text="📝 Згенерувати текст",
         callback_data=BotCallback(action="create_text_ai").pack(),
     )
@@ -26,7 +30,7 @@ def create_admin_keyboard() -> InlineKeyboardMarkup:
         callback_data=BotCallback(action="other_commands").pack(),
     )
 
-    builder.adjust(2, 1)
+    builder.adjust(1, 2, 1)
     return builder.as_markup()
 
 

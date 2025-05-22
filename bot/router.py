@@ -5,6 +5,7 @@ from bot.handlers import (
     any_messages,
 )
 from bot.handlers.callbacks import (
+    callback_complex_ai_generation,
     callback_create_image_ai,
     callback_create_text_ai,
     callback_get_id,
@@ -20,6 +21,7 @@ router = Router()
 router.include_router(hd_start.router)
 router.include_router(any_messages.router)
 
+router.include_router(callback_complex_ai_generation.router)
 router.include_router(callback_create_image_ai.router)
 router.include_router(callback_create_text_ai.router)
 router.include_router(callback_get_id.router)
