@@ -1,1 +1,1 @@
-⚠️ Error: Could not generate text.
+⚠️ Не вдалося з'єднатися з Hugging Face API.

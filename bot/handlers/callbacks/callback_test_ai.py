@@ -5,7 +5,7 @@ from loguru import logger
 import os
 
 from bot.utils.callback_data import BotCallback
-from bot.utils import test_ai_model
+from bot.utils.gen_huggingface import test_ai_model
 
 
 router = Router()
